@@ -90,8 +90,9 @@ export function OptionButton({ selected, onClick, children, className }: OptionB
   )
 }
 
-export function OptionGrid({ children, cols = 3 }: { children: ReactNode; cols?: 2 | 3 | 4 }) {
+export function OptionGrid({ children, cols = 3 }: { children: ReactNode; cols?: 1 | 2 | 3 | 4 }) {
   const gridCols = {
+    1: 'grid-cols-1',
     2: 'grid-cols-2',
     3: 'grid-cols-3',
     4: 'grid-cols-4',

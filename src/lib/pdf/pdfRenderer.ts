@@ -94,7 +94,7 @@ export class PageRenderCache {
     const context = canvas.getContext('2d')
     if (!context) return null
 
-    await page.render({ canvasContext: context, viewport, canvas }).promise
+    await page.render({ canvasContext: context, viewport }).promise
 
     return createImageBitmap(canvas)
   }

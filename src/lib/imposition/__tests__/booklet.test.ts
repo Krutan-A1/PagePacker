@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { DEFAULT_SETTINGS } from '@/types/imposition'
+import { DEFAULT_SETTINGS, type BookletSettings } from '@/types/imposition'
 import {
   buildSaddleStitchStream,
   getBookletSidePairs,
@@ -58,9 +58,9 @@ describe('saddle stitch ordering', () => {
 })
 
 describe('impose booklet layout', () => {
-  const bookletSettings = {
+  const bookletSettings: BookletSettings = {
     ...DEFAULT_SETTINGS,
-    bookletMode: 'booklet' as const,
+    bookletMode: 'booklet',
     pagesPerSheet: 2,
     duplex: true,
   }
@@ -89,9 +89,9 @@ describe('impose booklet layout', () => {
   })
 
   it('adds a blank back side when duplex leaves an odd side count', () => {
-    const settings = {
+    const settings: BookletSettings = {
       ...DEFAULT_SETTINGS,
-      bookletMode: 'booklet' as const,
+      bookletMode: 'booklet',
       pagesPerSheet: 16,
       duplex: true,
     }

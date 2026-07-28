@@ -73,13 +73,17 @@ function FileListItem({
       transition={{ duration: 0.2 }}
       draggable={!disabled}
       onDragStart={(e) => {
-        e.dataTransfer.setData('text/plain', String(index))
-        e.dataTransfer.effectAllowed = 'move'
+        const dragEvent = e as unknown as React.DragEvent<HTMLLIElement>
+        dragEvent.dataTransfer?.setData('text/plain', String(index))
+        if (dragEvent.dataTransfer) dragEvent.dataTransfer.effectAllowed = 'move'
       }}
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={(e) => {
+      onDragOver={(e) => {
         e.preventDefault()
-        const fromIndex = Number(e.dataTransfer.getData('text/plain'))
+      }}
+      onDrop={(e) => {
+        const dragEvent = e as unknown as React.DragEvent<HTMLLIElement>
+        dragEvent.preventDefault()
+        const fromIndex = Number(dragEvent.dataTransfer?.getData('text/plain'))
         if (!Number.isNaN(fromIndex)) onDropAt(fromIndex)
       }}
       className={cn(

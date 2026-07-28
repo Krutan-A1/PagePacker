@@ -158,7 +158,7 @@ export function computePageTransform(
   return best
 }
 
-export function isTransformWithinCell(transform: PageTransform, epsilon = 0.01): boolean {
+export function isTransformWithinCell(transform: PageTransform): boolean {
   if (transform.sourcePageIndex === 'blank') return true
   return !transform.clipped
 }
